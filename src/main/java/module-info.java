@@ -5,4 +5,10 @@ module com.example {
 
     opens model to javafx.fxml;
     exports model;
+
+    opens library to javafx.fml;
+    exports library;
+
+    opens controllers to javafx.fml;
+    exports controllers;
 }

@@ -2,9 +2,8 @@ package controllers;
 
 import java.io.IOException;
 
-import com.example.library.App;
-
 import javafx.fxml.FXML;
+import library.App;
 
 public class SecondaryController {
 
