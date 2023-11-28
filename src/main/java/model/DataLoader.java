@@ -20,10 +20,10 @@ public class DataLoader extends DataConstants {
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		UI ui = new UI();
-		ui.runScenarioOne();
-	}
+	// public static void main(String[] args) {
+	// 	UI ui = new UI();
+	// 	ui.runScenarioOne();
+	// }
 
 	/**
 	 * Get list of tasks from JSON file and convert them to Java objects
