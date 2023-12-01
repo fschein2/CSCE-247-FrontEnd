@@ -1,14 +1,25 @@
 package controllers;
 
-import java.io.IOException;
-
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import library.App;
+import javafx.scene.control.Button;
 
 public class PrimaryController {
 
     @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
+    private Button loginButton;
+
+    @FXML
+    private Button signupbutton;
+
+    @FXML
+    void login(ActionEvent event) {
+
     }
+
+    @FXML
+    void switchtosignup(ActionEvent event) {
+
+    }
+
 }
