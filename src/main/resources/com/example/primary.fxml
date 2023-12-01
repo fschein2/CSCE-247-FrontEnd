@@ -31,13 +31,13 @@
          </font></Label>
       <TextField promptText="Username" />
       <PasswordField promptText="Password" />
-      <Button fx:id="primaryButton" onAction="#switchToSecondary" prefWidth="58.4" text="Login" />
+      <Button fx:id="loginButton" onAction="#login" prefWidth="58.4" text="Login" />
       <Label text="New User?">
          <VBox.margin>
             <Insets bottom="-15.0" />
          </VBox.margin>
       </Label>
-      <Button mnemonicParsing="false" text="Sign Up" />
+      <Button fx:id="signupbutton" mnemonicParsing="false" onAction="#switchtosignup" text="Sign Up" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
