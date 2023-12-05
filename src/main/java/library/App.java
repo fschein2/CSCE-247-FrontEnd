@@ -1,10 +1,14 @@
 package library;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import model.SystemFACADE;
 
 import java.io.IOException;
 
@@ -17,9 +21,17 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("resources/com/example/primary"), 640, 480);
+        scene = new Scene(loadFXML("fucker"), 800, 480);
         stage.setScene(scene);
         stage.show();
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                // SystemFACADE.getInstance().logout();
+                Platform.exit();
+                System.exit(0);
+            }
+        });
     }
 
     public static void setRoot(String fxml) throws IOException {

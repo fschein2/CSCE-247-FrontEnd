@@ -7,9 +7,9 @@ module com.example {
     opens model to javafx.fxml;
     exports model;
 
-    opens library to javafx.fml;
+    opens library to javafx.fxml;
     exports library;
 
-    opens controllers to javafx.fml;
+    opens controllers to javafx.fxml;
     exports controllers;
 }
