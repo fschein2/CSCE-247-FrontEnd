@@ -4,7 +4,7 @@ public class SystemFACADE {
     public static User currentUser;
     public static Project currentProject;
 
-    public boolean login(String username, String password) {
+    public static boolean login(String username, String password) {
         UserList userList = UserList.getInstance();
         currentUser = userList.checkUser(username, password);
         return currentUser != null;
