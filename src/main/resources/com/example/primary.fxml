@@ -38,6 +38,11 @@
          </VBox.margin>
       </Label>
       <Button fx:id="signupbutton" mnemonicParsing="false" onAction="#switchtosignup" text="Sign Up" />
+      <Rectangle fill="#c4c8cc" height="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0">
+         <VBox.margin>
+            <Insets bottom="-20.0" left="-20.0" right="-20.0" top="-10.0" />
+         </VBox.margin>
+      </Rectangle>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

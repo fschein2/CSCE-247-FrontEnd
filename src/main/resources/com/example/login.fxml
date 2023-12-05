@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
@@ -25,19 +24,42 @@
             <Insets bottom="-60.0" />
          </VBox.margin>
       </Text>
-      <Label text="Log In">
+      <Label text="Sign Up">
          <font>
             <Font size="24.0" />
          </font></Label>
-      <TextField promptText="Username" />
-      <PasswordField promptText="Password" />
-      <Button fx:id="primaryButton" onAction="#switchToSecondary" prefWidth="58.4" text="Login" />
-      <Label text="New User?">
+      <TextField promptText="First Name">
+         <VBox.margin>
+            <Insets bottom="-10.0" />
+         </VBox.margin></TextField>
+      <TextField promptText="Last Name">
+         <VBox.margin>
+            <Insets bottom="-10.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField promptText="Email">
+         <VBox.margin>
+            <Insets bottom="-10.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField promptText="Username">
+         <VBox.margin>
+            <Insets bottom="-10.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField promptText="Password" />
+      <Button fx:id="signupButton" mnemonicParsing="false" text="Sign Up" />
+      <Label text="Already have an account?">
          <VBox.margin>
             <Insets bottom="-15.0" />
          </VBox.margin>
       </Label>
-      <Button mnemonicParsing="false" text="Sign Up" />
+      <Button fx:id="loginButton" onAction="#switchToLoginPage" prefWidth="58.4" text="Login" />
+      <Rectangle fill="#c4c8cc" height="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0">
+         <VBox.margin>
+            <Insets bottom="-20.0" left="-20.0" right="-20.0" top="-10.0" />
+         </VBox.margin>
+      </Rectangle>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
