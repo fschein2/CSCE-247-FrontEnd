@@ -1,8 +1,23 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 public class SystemFACADE {
+    private static SystemFACADE instance;
     public static User currentUser;
-    public static Project currentProject;
+    public static ArrayList<Project> currentProjectList;
+    public static ArrayList<User> globalUserList = DataLoader.getUsers();
+    public static ArrayList<Project> globalProjectList = DataLoader.getProjects();
+
+    private SystemFACADE() {}
+
+    public static SystemFACADE getInstance() {
+        if (instance == null) {
+            instance = new SystemFACADE();
+        }
+        return instance;
+    }
 
     public boolean login(String username, String password) {
         UserList userList = UserList.getInstance();
@@ -10,9 +25,11 @@ public class SystemFACADE {
         return currentUser != null;
     }
 
-    public User logout(String username, String password) {
-        User temp = new User("", "", "", "", "");
-        return temp;
+    public boolean logout() {
+        saveAll();
+        currentUser = null;
+        currentProjectList = null;
+        return currentUser == null && currentProjectList == null;
     }
 
     public int signUp(String firstName, String lastName, String email, String username, String password) {
@@ -25,7 +42,7 @@ public class SystemFACADE {
                 userList.addUser(firstName, lastName, email, username, password);
 
                 // save updated user list to data writer
-                DataWriter.saveUsers();
+                saveUsers();
                 return 0;
             }
             return 1;
@@ -35,6 +52,42 @@ public class SystemFACADE {
     }
 
     public ProjectList getProjects() {
+        // Needs to be specific to the currentUser
+        currentProjectList = ProjectList.getInstance().getProjectList();
         return ProjectList.getInstance();
     }
+
+    public void saveAll() {
+        UserList userList = UserList.getInstance();
+        ProjectList projectList = ProjectList.getInstance();
+        userList.saveUsers();
+        projectList.saveProjectAndTasks();
+    }
+
+    public void saveUsers() {
+        UserList userList = UserList.getInstance();
+        userList.saveUsers();
+    }
+
+    public void saveTasks() {
+        ProjectList projectList = ProjectList.getInstance();
+        projectList.saveTasks();
+    }
+
+    public void saveProjects() {
+        ProjectList projectList = ProjectList.getInstance();
+        projectList.saveProjects();
+    }
+
+    public Project getProjectFromList(UUID id) {
+        for(int i = 0; i < currentProjectList.size(); i++) {
+            if (currentProjectList.get(i).getId() == id) {
+                return currentProjectList.get(i);
+            }
+        }
+
+        return null;
+    }
+
+
 }

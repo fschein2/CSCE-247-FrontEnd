@@ -141,4 +141,8 @@ public class UserList {
     public void addUser(String firstName, String lastName, String email, String username, String password) {
         userList.add(new User(firstName, lastName, email, username, password));
     }
+
+    public void saveUsers() {
+        DataWriter.saveUsers();
+    }
 }

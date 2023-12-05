@@ -120,4 +120,17 @@ public class ProjectList {
         }
         return true;
     }
+
+    public void saveProjects() {
+        DataWriter.saveProjects();
+    }
+
+    public void saveTasks() {
+        DataWriter.saveTasks();
+    }
+
+    public void saveProjectAndTasks() {
+        DataWriter.saveTasks();
+        DataWriter.saveProjects();
+    }
 }
