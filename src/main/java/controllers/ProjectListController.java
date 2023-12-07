@@ -1,10 +1,25 @@
 package controllers;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ProjectListController {
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import library.App;
+import model.Project;
+import model.ProjectList;
+import model.SystemFACADE;
+
+public class ProjectListController implements Initializable {
 
     @FXML
     private Button account;
@@ -13,8 +28,49 @@ public class ProjectListController {
     private Button logout;
 
     @FXML
+    private HBox parent;
+
+    @FXML
     void primary(MouseEvent event) {
 
     }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        SystemFACADE systemFACADE = SystemFACADE.getInstance();
+
+        ProjectList projects = systemFACADE.getProjects();
+
+        for (Project project : projects.getProjectList()) {
+            VBox box = new VBox();
+            parent.getChildren().add(box);
+
+            Label label = new Label();
+            label.setText(project.getName());
+            box.getChildren().add(label);
+
+            box.setOnMouseClicked(event -> handleVBoxClick(project));
+        }
+    }
+
+    private void handleVBoxClick(Project project) {
+        try {
+                FXMLLoader loader = new FXMLLoader(App.class.getResource("taskList.fxml"));
+                Parent mainApp = loader.load();
+
+                TaskListController taskListController = loader.getController();
+
+                taskListController.setProject(project);
+
+                Scene currentScene = logout.getScene();
+
+                currentScene.setRoot(mainApp);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
+
+    
 
 }
