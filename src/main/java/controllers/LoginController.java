@@ -31,6 +31,7 @@ public class LoginController {
     @FXML
     void login(ActionEvent event) {
         if (SystemFACADE.getInstance().login(userTextField.getText(), passwordTextField.getText())) {
+            // Load and switch to the new FXML file (assuming "MainApp.fxml" here)
             try {
                 FXMLLoader loader = new FXMLLoader(App.class.getResource("projectList.fxml"));
                 Parent mainApp = loader.load();
@@ -46,7 +47,17 @@ public class LoginController {
     }
 
     @FXML
-    void switchToSignup(ActionEvent event) {
-        // Implement logic to switch to signup FXML
+    void switchToSignup(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("signup.fxml"));
+            Parent mainApp = loader.load();
+
+            Scene currentScene = signupButton.getScene();
+
+            currentScene.setRoot(mainApp);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
