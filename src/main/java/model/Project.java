@@ -26,7 +26,7 @@ public class Project {
     }
 
     /**
-     * A method that creates a prject object with additional parameters
+     * A method that creates a project object with additional parameters
      * 
      * @param id
      * @param projectName

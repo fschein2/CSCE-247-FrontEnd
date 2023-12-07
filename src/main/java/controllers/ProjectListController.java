@@ -37,9 +37,8 @@ public class ProjectListController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        SystemFACADE systemFACADE = SystemFACADE.getInstance();
 
-        ProjectList projects = systemFACADE.getProjects();
+        ProjectList projects = SystemFACADE.getInstance().getProjects();
 
         for (Project project : projects.getProjectList()) {
             VBox box = new VBox();
@@ -55,22 +54,23 @@ public class ProjectListController implements Initializable {
 
     private void handleVBoxClick(Project project) {
         try {
-                FXMLLoader loader = new FXMLLoader(App.class.getResource("taskList.fxml"));
-                Parent mainApp = loader.load();
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("taskList.fxml"));
 
-                TaskListController taskListController = loader.getController();
-
+            // Set a custom controller factory
+            loader.setControllerFactory(controllerClass -> {
+                TaskListController taskListController = new TaskListController();
                 taskListController.setProject(project);
+                return taskListController;
+            });
+            Parent mainApp = loader.load();
 
-                Scene currentScene = logout.getScene();
+            Scene currentScene = logout.getScene();
 
-                currentScene.setRoot(mainApp);
+            currentScene.setRoot(mainApp);
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
-    
 
 }
