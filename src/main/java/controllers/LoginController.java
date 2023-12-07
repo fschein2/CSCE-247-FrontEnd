@@ -31,7 +31,6 @@ public class LoginController {
     @FXML
     void login(ActionEvent event) {
         if (SystemFACADE.getInstance().login(userTextField.getText(), passwordTextField.getText())) {
-            // Load and switch to the new FXML file (assuming "MainApp.fxml" here)
             try {
                 FXMLLoader loader = new FXMLLoader(App.class.getResource("projectList.fxml"));
                 Parent mainApp = loader.load();

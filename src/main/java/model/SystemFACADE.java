@@ -7,17 +7,14 @@ public class SystemFACADE {
     private static SystemFACADE instance;
     public static User currentUser;
     public static ArrayList<Project> currentProjectList;
-    public static ArrayList<User> globalUserList = DataLoader.getUsers();
-    public static ArrayList<Project> globalProjectList = DataLoader.getProjects();
 
-    private SystemFACADE() {
-        DataLoader.getUsers();
-        DataLoader.getProjects();
-    }
+    private SystemFACADE() {}
 
     public static SystemFACADE getInstance() {
         if (instance == null) {
             instance = new SystemFACADE();
+            currentUser = UserList.getInstance().checkUser("aMadden", "toKillaM0");
+            System.out.println(currentUser);
         }
         return instance;
     }
