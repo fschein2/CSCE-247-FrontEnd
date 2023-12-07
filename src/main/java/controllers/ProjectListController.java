@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,13 +12,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import library.App;
 import model.Project;
 import model.ProjectList;
 import model.SystemFACADE;
+import model.UserRoleEnum;
 
 public class ProjectListController implements Initializable {
 
@@ -29,11 +30,6 @@ public class ProjectListController implements Initializable {
 
     @FXML
     private HBox parent;
-
-    @FXML
-    void primary(MouseEvent event) {
-
-    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -48,6 +44,14 @@ public class ProjectListController implements Initializable {
             Label label = new Label();
             label.setText(project.getName());
             box.getChildren().add(label);
+
+            VBox box2 = new VBox();
+            box2.setMinHeight(40);
+            box.getChildren().add(box2);
+
+            Label label2 = new Label();
+            label2.setText(project.getRoleMap().get(UserRoleEnum.MASTER).getUserName());
+            box.getChildren().add(label2);
 
             box.setOnMouseClicked(event -> handleVBoxClick(project));
         }
@@ -71,6 +75,38 @@ public class ProjectListController implements Initializable {
             }
     }
 
+    @FXML
+    void logout(ActionEvent event) {
+        if (SystemFACADE.getInstance().logout()) {
+            // Load and switch to the new FXML file (assuming "MainApp.fxml" here)
+            try {
+                FXMLLoader loader = new FXMLLoader(App.class.getResource("login.fxml"));
+                Parent mainApp = loader.load();
+
+                Scene currentScene = logout.getScene();
+
+                currentScene.setRoot(mainApp);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
+    void switchToAccount(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("account.fxml"));
+            Parent mainApp = loader.load();
+
+            Scene currentScene = account.getScene();
+
+            currentScene.setRoot(mainApp);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
 
 }
