@@ -46,7 +46,17 @@ public class LoginController {
     }
 
     @FXML
-    void switchToSignup(ActionEvent event) {
-        // Implement logic to switch to signup FXML
+    void switchToSignup(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("signup.fxml"));
+            Parent mainApp = loader.load();
+
+            Scene currentScene = signupButton.getScene();
+
+            currentScene.setRoot(mainApp);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
