@@ -65,6 +65,7 @@ public class TaskListController implements Initializable {
 
             Text taskText = new Text();
             taskText.setText(task.toString());
+            taskText.wrappingWidthProperty().bind(backlog.widthProperty());
 
             box.getChildren().add(taskText);
 
