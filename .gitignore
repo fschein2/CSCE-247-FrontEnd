@@ -1,2 +1,8 @@
 target/
 *.class
+target/classes/library/App.class
+target/classes/model/Comment.class
+target/classes/model/Log.class
+target/classes/model/ProjectList.class
+target/classes/model/Task.class
+target/classes/controllers/ProjectListController.class

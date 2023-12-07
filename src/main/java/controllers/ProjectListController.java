@@ -49,7 +49,12 @@ public class ProjectListController implements Initializable {
             box.getChildren().add(box2);
 
             Label label2 = new Label();
-            label2.setText(project.getRoleMap().get(UserRoleEnum.MASTER).getUserName());
+            if (project.getRoleMap().get(UserRoleEnum.MASTER) != null) {
+                label2.setText(project.getRoleMap().get(UserRoleEnum.MASTER).getUserName());
+            } else {
+                label2.setText("No Owner Found");
+            }
+
             box.getChildren().add(label2);
 
             box.setOnMouseClicked(event -> handleVBoxClick(project));
