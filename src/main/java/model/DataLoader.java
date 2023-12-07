@@ -30,8 +30,7 @@ public class DataLoader extends DataConstants {
 	 * 
 	 * @return an ArrayList of Task objects
 	 */
-	public static ArrayList<Task> getTasks() {
-		UserList userList = UserList.getInstance();
+	private static ArrayList<Task> getTasks() {
 		ArrayList<Task> tasks = new ArrayList<Task>();
 
 		try {

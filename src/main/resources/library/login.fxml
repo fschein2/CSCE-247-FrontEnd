@@ -29,15 +29,15 @@
          <font>
             <Font size="24.0" />
          </font></Label>
-      <TextField promptText="Username" />
-      <PasswordField promptText="Password" />
+      <TextField fx:id="userTextField" promptText="Username" />
+      <PasswordField fx:id="passwordTextField" promptText="Password" />
       <Button fx:id="loginButton" onAction="#login" prefWidth="58.4" text="Login" />
       <Label text="New User?">
          <VBox.margin>
             <Insets bottom="-15.0" />
          </VBox.margin>
       </Label>
-      <Button fx:id="signupbutton" mnemonicParsing="false" onAction="#switchtosignup" text="Sign Up" />
+      <!-- <Button fx:id="signupbutton" mnemonicParsing="false" onAction="#switchtosignup" text="Sign Up" /> -->
       <Rectangle fill="#c4c8cc" height="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0">
          <VBox.margin>
             <Insets bottom="-20.0" left="-20.0" right="-20.0" top="-10.0" />

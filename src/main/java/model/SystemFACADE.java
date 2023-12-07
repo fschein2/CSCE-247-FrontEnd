@@ -10,7 +10,10 @@ public class SystemFACADE {
     public static ArrayList<User> globalUserList = DataLoader.getUsers();
     public static ArrayList<Project> globalProjectList = DataLoader.getProjects();
 
-    private SystemFACADE() {}
+    private SystemFACADE() {
+        DataLoader.getUsers();
+        DataLoader.getProjects();
+    }
 
     public static SystemFACADE getInstance() {
         if (instance == null) {
@@ -19,9 +22,10 @@ public class SystemFACADE {
         return instance;
     }
 
-    public static boolean login(String username, String password) {
+    public boolean login(String username, String password) {
         UserList userList = UserList.getInstance();
         currentUser = userList.checkUser(username, password);
+        System.out.println(currentUser);
         return currentUser != null;
     }
 
