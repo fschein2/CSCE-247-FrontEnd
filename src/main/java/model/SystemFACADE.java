@@ -8,13 +8,13 @@ public class SystemFACADE {
     public static User currentUser;
     public static ArrayList<Project> currentProjectList;
 
-    private SystemFACADE() {}
+    private SystemFACADE() {
+    }
 
     public static SystemFACADE getInstance() {
         if (instance == null) {
             instance = new SystemFACADE();
-            currentUser = UserList.getInstance().checkUser("aMadden", "toKillaM0");
-            System.out.println(currentUser);
+            // currentUser = UserList.getInstance().checkUser("aMadden", "toKillaM0");
         }
         return instance;
     }
@@ -81,7 +81,7 @@ public class SystemFACADE {
     }
 
     public Project getProjectFromList(UUID id) {
-        for(int i = 0; i < currentProjectList.size(); i++) {
+        for (int i = 0; i < currentProjectList.size(); i++) {
             if (currentProjectList.get(i).getId() == id) {
                 return currentProjectList.get(i);
             }
@@ -89,6 +89,5 @@ public class SystemFACADE {
 
         return null;
     }
-
 
 }
