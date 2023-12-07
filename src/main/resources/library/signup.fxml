@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.PrimaryController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController">
    <children>
       <Rectangle fill="DODGERBLUE" height="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0">
          <VBox.margin>
@@ -28,27 +28,27 @@
          <font>
             <Font size="24.0" />
          </font></Label>
-      <TextField promptText="First Name">
+      <TextField fx:id="fNameTextField" promptText="First Name">
          <VBox.margin>
             <Insets bottom="-10.0" />
          </VBox.margin></TextField>
-      <TextField promptText="Last Name">
+      <TextField fx:id="lNameTextField" promptText="Last Name">
          <VBox.margin>
             <Insets bottom="-10.0" />
          </VBox.margin>
       </TextField>
-      <TextField promptText="Email">
+      <TextField fx:id="emailTextField" promptText="Email">
          <VBox.margin>
             <Insets bottom="-10.0" />
          </VBox.margin>
       </TextField>
-      <TextField promptText="Username">
+      <TextField fx:id="uNameTextField" promptText="Username">
          <VBox.margin>
             <Insets bottom="-10.0" />
          </VBox.margin>
       </TextField>
-      <TextField promptText="Password" />
-      <Button fx:id="signupButton" mnemonicParsing="false" text="Sign Up" />
+      <TextField fx:id="passTextField" promptText="Password" />
+      <Button fx:id="signupbutton" onAction="#signUp" mnemonicParsing="false" text="Sign Up" />
       <Label text="Already have an account?">
          <VBox.margin>
             <Insets bottom="-15.0" />

@@ -10,10 +10,7 @@ public class SystemFACADE {
     public static ArrayList<User> globalUserList = DataLoader.getUsers();
     public static ArrayList<Project> globalProjectList = DataLoader.getProjects();
 
-    private SystemFACADE() {
-        DataLoader.getUsers();
-        DataLoader.getProjects();
-    }
+    private SystemFACADE() {}
 
     public static SystemFACADE getInstance() {
         if (instance == null) {
