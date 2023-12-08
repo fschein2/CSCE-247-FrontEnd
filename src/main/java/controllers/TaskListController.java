@@ -11,9 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -22,8 +20,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import library.App;
 import model.Project;
-import model.ProjectList;
-import model.SystemFACADE;
 import model.Task;
 
 public class TaskListController implements Initializable {
@@ -107,8 +103,14 @@ public class TaskListController implements Initializable {
     @FXML
     private void addTask() {
         try {
-            // Load the task entry dialog FXML
             FXMLLoader loader = new FXMLLoader(App.class.getResource("taskEntryDialogue.fxml"));
+
+            loader.setControllerFactory(controllerClass -> {
+                TaskEntryDialogController taskEntryDialogController = new TaskEntryDialogController();
+                taskEntryDialogController.setProject(project);
+                return taskEntryDialogController;
+            });
+
             Parent root = loader.load();
 
             // Create a new stage for the dialog
@@ -119,9 +121,44 @@ public class TaskListController implements Initializable {
 
             // Show the dialog
             dialogStage.showAndWait();
+            refreshTasks();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    private void refreshTasks() {
+        // Clear existing task boxes
+        backlog.getChildren().clear();
+        toDo.getChildren().clear();
+        inProgress.getChildren().clear();
+        completed.getChildren().clear();
+
+        // Repopulate task boxes with updated tasks
+        for (Task task : project.getTasks()) {
+            HBox box = new HBox();
+            switch (task.getLog().getType().toString()) {
+                case "BACKLOG":
+                    backlog.getChildren().add(box);
+                    break;
+                case "TODO":
+                    toDo.getChildren().add(box);
+                    break;
+                case "INPROGRESS":
+                    inProgress.getChildren().add(box);
+                    break;
+                case "COMPLETE":
+                    completed.getChildren().add(box);
+                    break;
+            }
+
+            Text taskText = new Text();
+            taskText.setText(task.toString());
+            taskText.wrappingWidthProperty().bind(backlog.widthProperty());
+
+            box.getChildren().add(taskText);
+
+            box.setPrefHeight(Region.USE_COMPUTED_SIZE);
+        }
+    }
 }
