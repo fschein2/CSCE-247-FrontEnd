@@ -4,8 +4,10 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.SystemFACADE;
@@ -22,7 +24,13 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         SystemFACADE.getInstance();
-        scene = new Scene(loadFXML("login"), 1920, 1080);
+
+        // Get the primary screen bounds
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getVisualBounds();
+
+        // Set the initial window size to match the screen size
+        scene = new Scene(loadFXML("projectList"), 1920, 1080);
         stage.setScene(scene);
         stage.show();
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
