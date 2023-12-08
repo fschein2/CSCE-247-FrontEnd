@@ -76,32 +76,43 @@ public class Project {
     public UUID addTask(String name, String content, int priority, int hoursToComplete, UUID userID,
             int pointValue, String type) {
 
+        UUID returnID;
+
         switch (type) {
             case "design":
                 DesignTask task = new DesignTask(name, content, priority, hoursToComplete, userID, pointValue);
                 taskList.add(task);
-                return task.getID();
+                returnID = task.getID();
+                break;
 
             case "documentation":
                 DocumentationTask task2 = new DocumentationTask(name, content, priority, hoursToComplete, userID,
                         pointValue);
                 taskList.add(task2);
-                return task2.getID();
+                returnID = task2.getID();
+                break;
 
             case "bug":
                 BugTask task3 = new BugTask(name, content, priority, hoursToComplete, userID, pointValue);
                 taskList.add(task3);
-                return task3.getID();
+                returnID = task3.getID();
+                break;
 
             case "new feature":
                 NewFeatureTask task4 = new NewFeatureTask(name, content, priority, hoursToComplete, userID,
                         pointValue);
                 taskList.add(task4);
-                return task4.getID();
+                returnID = task4.getID();
+                break;
 
             default:
                 return null;
         }
+
+        SystemFACADE.getInstance().saveTasks();
+        SystemFACADE.getInstance().saveProjects();
+        return returnID;
+
     }
 
     /**

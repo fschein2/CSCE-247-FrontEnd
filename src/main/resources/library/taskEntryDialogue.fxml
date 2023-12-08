@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="457.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TaskEntryDialogController">
+    <TextField fx:id="taskNameField" prefHeight="26.0" prefWidth="405.0" promptText="Task Name">
+      <VBox.margin>
+         <Insets top="20.0" />
+      </VBox.margin></TextField>
+   <TextField fx:id="contentField" promptText="Content">
+      <VBox.margin>
+         <Insets top="20.0" />
+      </VBox.margin>
+   </TextField>
+   <TextField fx:id="priorityField" promptText="Priority">
+      <VBox.margin>
+         <Insets top="20.0" />
+      </VBox.margin>
+   </TextField>
+   <TextField fx:id="hoursToCompleteField" promptText="Hours to Complete">
+      <VBox.margin>
+         <Insets top="20.0" />
+      </VBox.margin>
+   </TextField>
+   <TextField fx:id="pointValueField" promptText="Point Value">
+      <VBox.margin>
+         <Insets top="20.0" />
+      </VBox.margin>
+   </TextField>
+   <ChoiceBox fx:id="userBox" prefHeight="26.0" prefWidth="458.0" style="-fx-background-color: #FFFFFF;">
+      <VBox.margin>
+         <Insets top="20.0" />
+      </VBox.margin>
+   </ChoiceBox>
+   <ChoiceBox fx:id="typeBox" prefHeight="26.0" prefWidth="458.0" style="-fx-background-color: #FFFFFF;">
+      <VBox.margin>
+         <Insets top="20.0" />
+      </VBox.margin>
+   </ChoiceBox>
+    <Button onAction="#addTask" text="Add Task">
+      <VBox.margin>
+         <Insets />
+      </VBox.margin></Button>
+</VBox>
