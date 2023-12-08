@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import library.App;
 import model.Project;
 import model.ProjectList;
@@ -37,26 +38,36 @@ public class ProjectListController implements Initializable {
         ProjectList projects = SystemFACADE.getInstance().getProjects();
 
         for (Project project : projects.getProjectList()) {
+            VBox invisBox = new VBox();
+            parent.getChildren().add(invisBox);
+            invisBox.setMinWidth(75);
+
             VBox box = new VBox();
             parent.getChildren().add(box);
+            box.setMaxWidth(275);
+            box.setMinWidth(275);
+            box.setStyle(
+                    "-fx-background-color: #3498db; -fx-padding: 0; -fx-spacing: 5; -fx-border-color: #000000; -fx-border-width: 0;");
 
             Label label = new Label();
             label.setText(project.getName());
+            label.setFont(new Font(35));
             box.getChildren().add(label);
 
             VBox box2 = new VBox();
-            box2.setMinHeight(40);
+            box2.setMinHeight(100);
             box.getChildren().add(box2);
+            box2.setStyle("-fx-background-color: #D3D3D3;");
 
             Label label2 = new Label();
             if (project.getRoleMap().get(UserRoleEnum.MASTER) != null) {
                 label2.setText(project.getRoleMap().get(UserRoleEnum.MASTER).getUserName());
+                label2.setFont(new Font(30));
             } else {
                 label2.setText("No Owner Found");
             }
 
             box.getChildren().add(label2);
-
             box.setOnMouseClicked(event -> handleVBoxClick(project));
         }
     }
